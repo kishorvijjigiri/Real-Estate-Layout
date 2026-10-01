@@ -83,4 +83,3 @@ Make sure you have **Node.js** installed on your system.
 
 - **Next.js** (App Router, JavaScript)
 - **Tailwind CSS**
-- **React** (useState, useMemo)
