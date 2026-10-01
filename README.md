@@ -10,7 +10,7 @@ A clean, responsive, and easy-to-understand web application built with **Next.js
 - **Plot Status Colors**:
   - 🔘 **Available (Gray)**: Open for inquiry.
   - 🟢 **Booked (Green)**: Under agreement.
-  - 🔴 **Sold (Disabled)**: Marked as sold and disabled from interaction.
+  - 🔴 **Sold (cural)**: Marked as sold and disabled from interaction.
 - **Hover Information Tooltip**: Hovering on any plot displays plot number, size (Sq. Ft.), status, and total cost.
 - **Plot Details Modal**: Clicking on a plot opens a clean popup with dimensions, facing, rate/sq.ft, and an inquiry button.
 - **Filters**:
