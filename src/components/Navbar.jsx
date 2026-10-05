@@ -4,14 +4,13 @@ import React from 'react';
 
 export default function Navbar() {
   return (
-    <header className="bg-slate-900 border-b border-white/10 sticky top-0 z-40 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div>
-          <h1 className="text-base sm:text-lg font-bold tracking-tight">
-             Real Estate Plot Layout
-          </h1>
-        </div>
+    <header className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        <h1 className="text-lg font-semibold text-gray-900">
+          Real Estate Plot Layout
+        </h1>
       </div>
     </header>
   );
 }
+

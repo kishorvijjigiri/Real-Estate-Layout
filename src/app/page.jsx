@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Legend from '@/components/Legend';
 import FilterCard from '@/components/FilterCard';
 import MasterPlanLayout from '@/components/MasterPlanLayout';
-import PlotModal from '@/components/PlotModal';
 import { initialPlots, SQFT_FILTER_PRESETS, MAX_COST_DEFAULT } from '@/data/plotsData';
 import { SlidersHorizontal } from 'lucide-react';
 
@@ -15,7 +14,6 @@ export default function Home() {
   const [selectedSize, setSelectedSize] = useState(null);
   const [maxCost, setMaxCost] = useState(MAX_COST_DEFAULT);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [selectedPlot, setSelectedPlot] = useState(null);
 
   // Filter Logic
   const filteredPlots = useMemo(() => {
@@ -68,7 +66,7 @@ export default function Home() {
     });
   };
 
-  // Reset all filters (matches red reload button)
+  // Reset all filters
   const handleResetFilters = () => {
     setSelectedStatuses([]);
     setSelectedSize(null);
@@ -76,13 +74,12 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col font-sans">
-      {/* 1. Header */}
+    <div className="min-h-screen bg-white text-gray-900 flex flex-col font-sans">
+      {/* Header */}
       <Navbar />
 
       {/* Main Content Area */}
-      <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-5 space-y-4 flex-1">
-
+      <main className="max-w-7xl w-full mx-auto px-4 py-4 space-y-3 flex-1">
         {/* Status Legend Bar */}
         <Legend
           stats={stats}
@@ -92,17 +89,14 @@ export default function Home() {
 
         {/* Master Plan Layout Container */}
         <div className="relative w-full">
-          {/* Master Plan Aerial Image with Plot Grid Overlay */}
           <MasterPlanLayout
             allPlots={initialPlots}
             filteredPlotIds={filteredPlotIds}
-            selectedPlot={selectedPlot}
-            onSelectPlot={(plot) => setSelectedPlot(plot)}
           />
 
-          {/* Floating Filter Card or Trigger Button on Top-Left (Mobile & Desktop Responsive) */}
+          {/* Filter Card / Trigger Button */}
           {isFilterOpen ? (
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30 max-w-[calc(100vw-1.5rem)]">
+            <div className="absolute top-3 left-3 z-30 max-w-[calc(100vw-1.5rem)]">
               <FilterCard
                 selectedStatuses={selectedStatuses}
                 onToggleStatus={handleToggleStatus}
@@ -118,30 +112,21 @@ export default function Home() {
             </div>
           ) : (
             <button
+              type="button"
               onClick={() => setIsFilterOpen(true)}
-              className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900/95 hover:bg-slate-800 active:scale-95 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-semibold text-white hover:text-cyan-300 shadow-xl transition-all cursor-pointer"
+              className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded bg-white hover:bg-gray-100 border border-gray-300 text-xs font-medium text-gray-700 cursor-pointer shadow-sm"
               title="Open Filters"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
-              <span>Apply Filter</span>
+              <SlidersHorizontal className="w-3.5 h-3.5 text-gray-600" />
+              <span>Filter</span>
               {(selectedStatuses.length > 0 || selectedSize || maxCost < MAX_COST_DEFAULT) && (
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-blue-600" />
               )}
             </button>
           )}
         </div>
       </main>
-
-      {/* Plot Details Modal on Click */}
-      <PlotModal
-        plot={selectedPlot}
-        onClose={() => setSelectedPlot(null)}
-      />
-
-      {/* Footer */}
-      <footer className="bg-slate-900 border-t border-white/10 py-5 text-center text-xs text-slate-500">
-        <p>© 2026 Real Estate Plot Layout. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
+
