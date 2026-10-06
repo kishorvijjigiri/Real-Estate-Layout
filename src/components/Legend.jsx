@@ -24,7 +24,7 @@ export default function Legend({ stats, selectedStatuses = [], onToggleStatus })
           }`}
           title="Toggle Available plots"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-slate-500 inline-block" />
+          
           <span>Available</span>
           <span className="text-gray-500 font-mono">({stats.available})</span>
         </button>
@@ -40,7 +40,7 @@ export default function Legend({ stats, selectedStatuses = [], onToggleStatus })
           }`}
           title="Toggle Booked plots"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" />
+         
           <span>Booked</span>
           <span className="text-gray-500 font-mono">({stats.booked})</span>
         </button>
@@ -56,7 +56,7 @@ export default function Legend({ stats, selectedStatuses = [], onToggleStatus })
           }`}
           title="Toggle Sold plots"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block" />
+          
           <span>Sold</span>
           <span className="text-gray-500 font-mono">({stats.sold})</span>
         </button>
